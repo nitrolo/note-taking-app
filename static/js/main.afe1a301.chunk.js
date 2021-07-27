@@ -1,0 +1,2 @@
+(this["webpackJsonpnote-taking-app"]=this["webpackJsonpnote-taking-app"]||[]).push([[0],{10:function(t,n,e){"use strict";e.r(n);var c=e(1),i=e.n(c),o=e(3),p=e.n(o),r=(e(8),e(0)),a=function(){return Object(r.jsx)("div",{children:Object(r.jsx)("p",{children:"Note taking app"})})};p.a.render(Object(r.jsx)(i.a.StrictMode,{children:Object(r.jsx)(a,{})}),document.getElementById("root"))},8:function(t,n,e){}},[[10,1,2]]]);
+//# sourceMappingURL=main.afe1a301.chunk.js.map
