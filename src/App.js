@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import NotesList from './components/NotesList';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
   const [notes, setNotes] = useState([
@@ -21,6 +22,8 @@ const App = () => {
     },
   ]);
 
+  const [searchText, setSearchText] = useState('');
+
   const addNote = (text) => {
     const date = new Date();
     const newNote = {
@@ -39,8 +42,11 @@ const App = () => {
 
   return (
     <div className='container'>
+      <SearchBar handleSearchNote={setSearchText} />
       <NotesList
-        notes={notes}
+        notes={notes.filter((note) =>
+          note.text.toLocaleLowerCase().includes(searchText)
+        )}
         handleAddNote={addNote}
         handleDeleteNote={deleteNote}
       />
