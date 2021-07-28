@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import uuid from 'react-uuid';
 import NotesList from './components/NotesList';
 import SearchBar from './components/SearchBar';
@@ -23,6 +23,18 @@ const App = () => {
   ]);
 
   const [searchText, setSearchText] = useState('');
+
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem('note-taking-app-data'));
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('note-taking-app-data', JSON.stringify(notes));
+  }, [notes]);
 
   const addNote = (text) => {
     const date = new Date();
