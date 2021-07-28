@@ -7,7 +7,7 @@ const AddNote = ({ handleAddNote }) => {
     setNoteText(event.target.value);
   };
 
-  const handleSaveClick = (event) => {
+  const handleSaveClick = () => {
     if (noteText.trim().length > 0) {
       handleAddNote(noteText);
       setNoteText('');
@@ -20,6 +20,7 @@ const AddNote = ({ handleAddNote }) => {
         rows='8'
         cols='10'
         placeholder='Type to add a note...'
+        value={noteText}
         onChange={handleChange}
       ></textarea>
       <div className='note-footer'>
