@@ -7,18 +7,8 @@ const App = () => {
   const [notes, setNotes] = useState([
     {
       id: uuid(),
-      text: 'Sample text for first note',
-      date: '27/7/2021',
-    },
-    {
-      id: uuid(),
-      text: 'Sample text for second note',
-      date: '27/7/2021',
-    },
-    {
-      id: uuid(),
-      text: 'Sample text for third note',
-      date: '27/7/2021',
+      text: 'Sample text',
+      date: '7/27/2021',
     },
   ]);
 
@@ -43,7 +33,7 @@ const App = () => {
       text: text,
       date: date.toLocaleDateString(),
     };
-    const newNotes = [...notes, newNote];
+    const newNotes = [newNote, ...notes];
     setNotes(newNotes);
   };
 
