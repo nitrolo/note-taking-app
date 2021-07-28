@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import NotesList from './components/NotesList';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
   const [notes, setNotes] = useState([
@@ -39,6 +40,7 @@ const App = () => {
 
   return (
     <div className='container'>
+      <SearchBar />
       <NotesList
         notes={notes}
         handleAddNote={addNote}
