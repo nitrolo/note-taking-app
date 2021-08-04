@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const AddNote = ({ handleAddNote }) => {
-  const [noteText, setNoteText] = useState('');
+const AddNote = ({ defaultValue = '', onBlur, handleAddNote }) => {
+  const [noteText, setNoteText] = useState(defaultValue);
   const charLimit = 400;
 
   const handleChange = (event) => {
@@ -10,25 +10,37 @@ const AddNote = ({ handleAddNote }) => {
     }
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = (e) => {
     if (noteText.trim().length > 0) {
-      handleAddNote(noteText);
-      setNoteText('');
+      if (defaultValue !== '') {
+        onBlur(e);
+      } else {
+        handleAddNote(noteText);
+        setNoteText('');
+      }
     }
   };
 
+  const moveCursorAtEnd = (e) => {
+    const value = e.target.value;
+    e.target.value = '';
+    e.target.value = value;
+  };
+
   return (
-    <div className='note new'>
+    <div className="note new" onBlur={onBlur}>
       <textarea
-        rows='8'
-        cols='10'
-        placeholder='Type to add a note...'
+        autoFocus={true}
+        onFocus={moveCursorAtEnd}
+        rows="8"
+        cols="10"
+        placeholder="Type to add a note..."
         value={noteText}
         onChange={handleChange}
       ></textarea>
-      <div className='note-footer'>
+      <div className="note-footer">
         <small>{charLimit - noteText.length} remaining</small>
-        <button className='save-button' onClick={handleSaveClick}>
+        <button className="save-button" onClick={handleSaveClick}>
           Save
         </button>
       </div>
