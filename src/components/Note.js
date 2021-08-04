@@ -15,8 +15,8 @@ const Note = ({
     return <Edit id={id} text={text} handleEditNote={handleEditNote} />;
   }
   return (
-    <div className="note" onClick={onClick}>
-      <span>{text}</span>
+    <div className="note">
+      <span onClick={onClick}>{text}</span>
       <div className="note-footer">
         <small>{date}</small>
         <MdDeleteForever
